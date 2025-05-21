@@ -2,6 +2,7 @@
 #include <fstream>
 #include <cstdlib>
 #include <ctime>
+#include <string>
 using namespace std;
 
 // ======= Ієрархія без віртуального успадкування =======
@@ -38,40 +39,45 @@ public:
 };
 
 class B : public A {
+    int bData;
 public:
-    B() { cout << "B створено\n"; }
+    B() : bData(1) { cout << "B створено\n"; }
     ~B() { cout << "B знищено\n"; }
 
     void info() const override {
-        cout << "Це клас B, значення = " << value << endl;
+        cout << "Це клас B, значення = " << value << ", bData = " << bData << endl;
     }
 };
 
 class C : public A {
+    double cData;
 public:
-    C() { cout << "C створено\n"; }
+    C() : cData(2.5) { cout << "C створено\n"; }
     ~C() { cout << "C знищено\n"; }
 
     void info() const override {
-        cout << "Це клас C, значення = " << value << endl;
+        cout << "Це клас C, значення = " << value << ", cData = " << cData << endl;
     }
 };
 
 class D : public B {
+    string dNote;
 public:
-    D() { cout << "D створено\n"; }
+    D() : dNote("D-note") { cout << "D створено\n"; }
     ~D() { cout << "D знищено\n"; }
 };
 
 class E : public C {
+    char eChar;
 public:
-    E() { cout << "E створено\n"; }
+    E() : eChar('E') { cout << "E створено\n"; }
     ~E() { cout << "E знищено\n"; }
 };
 
 class F : public D, public E {
+    bool fFlag;
 public:
-    F() { cout << "F створено (без virtual)\n"; }
+    F() : fFlag(true) { cout << "F створено (без virtual)\n"; }
     ~F() { cout << "F знищено (без virtual)\n"; }
 };
 
@@ -109,44 +115,49 @@ public:
 };
 
 class VB : virtual public VA {
+    int vbCode;
 public:
-    VB() { cout << "VB створено\n"; }
+    VB() : vbCode(10) { cout << "VB створено\n"; }
     ~VB() { cout << "VB знищено\n"; }
 
     void info() const override {
-        cout << "Це клас VB, значення = " << value << endl;
+        cout << "Це клас VB, значення = " << value << ", vbCode = " << vbCode << endl;
     }
 };
 
 class VC : virtual public VA {
+    float vcLevel;
 public:
-    VC() { cout << "VC створено\n"; }
+    VC() : vcLevel(3.14f) { cout << "VC створено\n"; }
     ~VC() { cout << "VC знищено\n"; }
 
     void info() const override {
-        cout << "Це клас VC, значення = " << value << endl;
+        cout << "Це клас VC, значення = " << value << ", vcLevel = " << vcLevel << endl;
     }
 };
 
 class VD : public VB {
+    string vdName;
 public:
-    VD() { cout << "VD створено\n"; }
+    VD() : vdName("VD") { cout << "VD створено\n"; }
     ~VD() { cout << "VD знищено\n"; }
 };
 
 class VE : public VC {
+    bool veState;
 public:
-    VE() { cout << "VE створено\n"; }
+    VE() : veState(false) { cout << "VE створено\n"; }
     ~VE() { cout << "VE знищено\n"; }
 };
 
 class VF : public VD, public VE {
+    long vfId;
 public:
-    VF() { cout << "VF створено (з virtual)\n"; }
+    VF() : vfId(999) { cout << "VF створено (з virtual)\n"; }
     ~VF() { cout << "VF знищено (з virtual)\n"; }
 
     void info() const override {
-        cout << "Це клас VF, значення = " << value << endl;
+        cout << "Це клас VF, значення = " << value << ", vfId = " << vfId << endl;
     }
 };
 
